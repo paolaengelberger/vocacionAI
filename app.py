@@ -4,7 +4,7 @@ import openai
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 st.title("Vocación AI Chile")
-
+st.text("Este es como una prueba de concepto de cómo usar inteligencia artificial para sugerir carreras a estudiantes")
 # Define the questions and answers
 questions = {
     "¿Disfrutas trabajar con números?": ["Sí", "No"],
