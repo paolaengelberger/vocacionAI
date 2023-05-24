@@ -3,7 +3,7 @@ import openai
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("Vocación AI 🇨🇱")
+st.title("Vocación AI ")
 st.markdown("Este es como una prueba de concepto de cómo usar inteligencia artificial para sugerir carreras a estudiantes")
 st.markdown("Este es un proyecto creado por Emilia, Daniela y Paola")
 # Define the questions and answers
