@@ -33,6 +33,13 @@ questions = {
 # Get user answers
 user_answers = {} #creación de diccionario vacío con las respuestas del usuario
 
+for question, options in questions.items():
+    if options:
+        answer = st.radio(question, options)
+    else:
+        answer = st.text_input(question)
+    user_answers[question] = answer
+
 
 
 def generate_answer():
