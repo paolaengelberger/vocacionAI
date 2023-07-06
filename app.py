@@ -1,6 +1,6 @@
 import streamlit as st
 import openai
-from streamlit_option_menu import option_menu
+#from streamlit_option_menu import option_menu
 
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -10,9 +10,9 @@ st.markdown("Este es como una prueba de concepto de cómo usar inteligencia arti
 st.markdown("Este es un proyecto creado por EquipoVOC")
 
 
-from streamlit_option_menu import option_menu # importar la función option_menu
-opciones = ["Sobre nosotras", "Ayuda", "Contacto"] # lista de opciones
-opcion_seleccionada = option_menu("Selecciona una opción:", opciones) # función option_menu con sus argumentos 
+#from streamlit_option_menu import option_menu # importar la función option_menu
+#opciones = ["Sobre nosotras", "Ayuda", "Contacto"] # lista de opciones
+#opcion_seleccionada = option_menu("Selecciona una opción:", opciones) # función option_menu con sus argumentos 
 
 
 
