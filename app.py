@@ -3,26 +3,48 @@ import openai
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("Vocación AI Chile")
-st.markdown("Este es como una prueba de concepto de cómo usar inteligencia artificial para sugerir carreras a estudiantes")
-st.markdown("Este es un proyecto creado por Emilia, Daniela y Paola")
+st.title(" Proyecto VOC")# titulo de la app
+st.markdown("Este es como una prueba de concepto de cómo usar inteligencia artificial para sugerir carreras a estudiantes") # descripción de la app
+st.markdown("Este es un proyecto creado por EquipoVOC")
 # Define the questions and answers
 questions = {
-    "¿Disfrutas trabajar con números?": ["Sí", "No"],
-    "¿Prefieres trabajar en interiores o exteriores?": ["Interiores", "Exteriores"],
-    "¿Te gusta trabajar en equipo o solo?": ["Equipo", "Solo"],
+    "¿Disfrutas trabajar con números?": ["Sí", "No", "Más o menos"],
+    "¿Prefieres trabajar en interiores o exteriores?": ["Interiores", "Exteriores", "Ambos"],
+    "¿Te gusta trabajar en equipo o solo?": ["Equipo", "Solo", "Ambos"],
     "¿Eres más creativo o analítico?": ["Creativo", "Analítico"],
     "¿Prefieres trabajar con tecnología o personas?": ["Tecnología", "Personas"],
     "¿Disfrutas resolver problemas?": ["Sí", "No"],
     "¿Estás interesado en ciencias?": ["Sí", "No"],
     "¿Te gusta ayudar a los demás?": ["Sí", "No"],
-    "Menciona una habilidad que consideres que tienes": None,
+    "Menciona una habilidad que consideres que tienes": None, # pregunta abierta con campo de texto
     "¿Qué temas te interesan más en tus estudios?": None,
 }
 
 # Get user answers
-user_answers = {}
+user_answers = {} #creación de diccionario vacío con las respuestas del usuario
 
+if st.button("Iniciar Test"):
+    question_keys = list(questions.keys())
+    num_questions = len(question_keys)
+    current_question_index = 0
+
+    while current_question_index < num_questions:
+        current_question = question_keys[current_question_index]
+        options = questions[current_question]
+
+        st.markdown(f"**Pregunta:** {current_question}")
+        if options:
+            answer = st.radio("Respuesta:", options)
+        else:
+            answer = st.text_input("Respuesta:")
+        user_answers[current_question] = answer
+
+        current_question_index += 1
+
+        if current_question_index < num_questions:
+            if st.button("Siguiente"):
+                continue  # Continuar con la siguiente pregunta     
+            
 for question, options in questions.items():
     if options:
         answer = st.radio(question, options)
