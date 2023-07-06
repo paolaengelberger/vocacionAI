@@ -1,11 +1,21 @@
 import streamlit as st
 import openai
+from streamlit_option_menu import option_menu
+
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 st.title(" Proyecto VOC")# titulo de la app
 st.markdown("Este es como una prueba de concepto de cómo usar inteligencia artificial para sugerir carreras a estudiantes") # descripción de la app
 st.markdown("Este es un proyecto creado por EquipoVOC")
+
+
+from streamlit_option_menu import option_menu # importar la función option_menu
+opciones = ["Sobre nosotras", "Ayuda", "Contacto"] # lista de opciones
+opcion_seleccionada = option_menu("Selecciona una opción:", opciones) # función option_menu con sus argumentos 
+
+
+
 # Define the questions and answers
 questions = {
     "¿Disfrutas trabajar con números?": ["Sí", "No", "Más o menos"],
@@ -23,34 +33,6 @@ questions = {
 # Get user answers
 user_answers = {} #creación de diccionario vacío con las respuestas del usuario
 
-if st.button("Iniciar Test"):
-    question_keys = list(questions.keys())
-    num_questions = len(question_keys)
-    current_question_index = 0
-
-    while current_question_index < num_questions:
-        current_question = question_keys[current_question_index]
-        options = questions[current_question]
-
-        st.markdown(f"**Pregunta:** {current_question}")
-        if options:
-            answer = st.radio("Respuesta:", options)
-        else:
-            answer = st.text_input("Respuesta:")
-        user_answers[current_question] = answer
-
-        current_question_index += 1
-
-        if current_question_index < num_questions:
-            if st.button("Siguiente"):
-                continue  # Continuar con la siguiente pregunta     
-            
-for question, options in questions.items():
-    if options:
-        answer = st.radio(question, options)
-    else:
-        answer = st.text_input(question)
-    user_answers[question] = answer
 
 
 def generate_answer():
